@@ -42,17 +42,53 @@ def iterateDictionary(students=students):
     for x in students:
         for key, value in x.items():
             print(key,"=" ,value)
-# first_name - Michael, last_name - Jordan
-# first_name - John, last_name - Rosales
-# first_name - Mark, last_name - Guillen
-# first_name - KB, last_name - Tonel
 
 
+def iterateDictionary2(key_name="first_name", list=students):
+    for x in list:
+        print(x[key_name])
+
+
+
+# 4)  Iterate Through a Dictionary with List Values
+# Create a function printInfo(some_dict) that given a dictionary whose values are
+#  all lists, prints the name of each key along with the size of its list, and then
+#  prints the associated values within each key's list. For example:
+dojo = {
+   'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+   'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
+}
+def printInfo(dict=dojo):
+        for key in dict:
+            print(len(dict[key]),key)
+            print(dict[key])
+
+# output:
+# 7 LOCATIONS
+# San Jose
+# Seattle
+# Dallas
+# Chicago
+# Tulsa
+# DC
+# Burbank
+#
+# 8 INSTRUCTORS
+# Michael
+# Amy
+# Eduardo
+# Josh
+# Graham
+# Patrick
+# Minh
+# Devon
 
 
 def main():
-    # changes_1()
+    change_1()
     iterateDictionary()
+    iterateDictionary2()
+    printInfo()
 
 
 if __name__ == '__main__':
