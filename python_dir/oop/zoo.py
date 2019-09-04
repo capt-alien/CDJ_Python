@@ -1,5 +1,104 @@
 #!python3
 
+class Cat:
+    def __init__(self):
+        self.size = 200
+        self.diet = 'meat'
+        self.health = 500
+        self.happiness = 300
+
+    def eat(self, amount=50):
+        self.health += 10
+        self.size += amount/100
+        return self
+
+    def run(self):
+        self.health -= 10
+        self.happiness += 5
+        self.size -= 5
+        return self
+
+    def laz(self):
+        self.health -= 5
+        self.happiness -=15
+        return self
+
+class Lion(Cat):
+    def __init__(self, name):
+        self.name = name
+        self.coat = 'gold'
+        self.size = 200
+        self.diet = 'meat'
+        self.health = 500
+        self.happiness = 300
+
+    def eat(self, amount=50):
+        self.health += 10
+        self.size += amount/100
+        return self
+
+    def run(self):
+        self.health -= 10
+        self.happiness += 5
+        self.size -= 5
+        return self
+
+    def laz(self):
+        self.health -= 5
+        self.happiness -=15
+        return self
+
+    def display_info(self):
+        print("="*30)
+        print("Name: ", self.name)
+        print("Coat: ", self.coat)
+        print("size: ", self.size)
+        print("Health: ", self.health)
+        print("happiness: ", self.happiness)
+
+
+class Hippo:
+    def __init__(name):
+        self.name = name
+        self.weight = 5000
+        self.temperment = "angry"
+
+
+
+
+class Tiger(Cat):
+    def __init__(self, name):
+        self.name = name
+        self.coat = 'striped'
+        self.size = 200
+        self.diet = 'meat'
+        self.health = 500
+        self.happiness = 300
+
+    def eat(self, amount=50):
+        self.health += 10
+        self.size += amount/100
+        return self
+
+    def run(self):
+        self.health -= 10
+        self.happiness += 5
+        self.size -= 5
+        return self
+
+    def laz(self):
+        self.health -= 5
+        self.happiness -=15
+        return self
+
+    def display_info(self):
+        print("="*30)
+        print("Name: ", self.name)
+        print("Coat: ", self.coat)
+        print("size: ", self.size)
+        print("Health: ", self.health)
+        print("happiness: ", self.happiness)
+
 
 class Zoo:
     def __init__(self, zoo_name):
