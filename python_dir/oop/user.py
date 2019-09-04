@@ -2,31 +2,6 @@
 
 
 #classes
-class User:
-
-    def __init__(self, name, starting_bal=500):
-        self.name = name
-        self.balance = starting_bal
-        # print("user: ", self.name, "created!")
-        # self.password = password
-
-    def make_deposit(self, amount):
-        self.balance += amount
-        return self
-
-    def make_withdrawal(self, amount):
-        self.balance -= amount
-        return self
-
-    def display_balance(self):
-        print(self.name,": ", self.balance)
-
-    def transfer(self, other_user, amount):
-        self.make_withdrawal(amount)
-        other_user.balance += amount
-        return self
-
-
 class BankAccount:
     def __init__(self, int_rate=.0125, balance=500):
         self.int_rate = int_rate
@@ -47,6 +22,30 @@ class BankAccount:
         if self.balance > 0:
             self.balance = self.balance*(1+ self.int_rate)
         return self
+
+
+class User:
+
+    def __init__(self, name, starting_bal=500):
+        self.name = name
+        self.balance = starting_bal
+        self.account = BankAccount()
+
+    def make_deposit(self, amount):
+        self.account.deposit(amount)
+        return self
+
+    def make_withdrawal(self, amount):
+        self.account.withdraw(amount)
+        return self
+
+    def display_balance(self):
+        print(self.name,": ", self.account.display_balance())
+
+    def transfer(self, other_user, amount):
+        self.make_withdrawal(amount)
+        other_user.make_deposit(amount)
+        return self, other_user
 
 
 def main():
