@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkerboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+        body
+
+    </style>
+</head>
+<body>
+    {% for x in range(0, 4): %}
+    <div class='center'>
+    <!-- <ul id='num'> -->
+    {% for x in range(0, 4): %}
+        <div class='box_1'></div>
+        <div class='box_2'></div>
+        {% endfor %}
+    </div>
+
+    <div class='center'>
+    <!-- <ul id='num'> -->
+    {% for x in range(0, 4): %}
+        <div class='box_2'></div>
+        <div class='box_1'></div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+</body>
+</html>
