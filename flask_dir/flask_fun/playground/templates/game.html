@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: linen;
+        }
+        * {
+            outline: 1px dotted red;
+            margin: 0px;
+        }
+        h1 {
+            color: maroon;
+        }
+        #head_1{
+            width: auto;
+            height: 100px;
+            text-align: center;
+            padding-top: 100px
+        }
+        #center{
+            width: auto;
+            height: auto;
+
+        }
+
+
+        .box{
+            width: 250px;
+            height:250px;
+            background-color: {{color}};
+            display: inline-block;
+            margin: 30px
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id='head_1'>
+    <h1>Welcome</h1>
+    </div>
+
+    <div id='center'>
+
+    <!-- <ul id='num'> -->
+    {% for x in range(0, num): %}
+        <div class='box'></div>
+        {% endfor %}
+
+    <div>
+
+
+    </div>
+
+</body>
+</html>
