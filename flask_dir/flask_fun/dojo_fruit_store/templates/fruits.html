@@ -18,21 +18,27 @@
           </div>
         </div>
       </header>
-  
+
       <main role="main">
-  
+
         <section class="jumbotron text-center">
           <div class="container">
             <h1 class="jumbotron-heading">Dojo Fruits</h1>
-            <p>Please figure out how to display the images here...</p>
 
-            <p>
+                {% for pic in photos:%}
+                {{pic}}
+                    <br>
+                        <img src='/static/img/{{pic}}'>
+                    </br>
+                    <!-- <img src="{{ url_for('static', filename='img/{{pic}}') }}"> -->
+                {% endfor %}
+
               <a href="/" class="btn btn-primary my-2">Go back</a>
             </p>
           </div>
         </section>
-  
+
       </main>
-      
+
 </body>
 </html>
