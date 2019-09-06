@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, request, redirect
-import glob
+from glob import glob
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -11,8 +12,11 @@ def index():
 
 @app.route('/checkout', methods=['POST'])
 def checkout():
+    print("*"*50)
+    total =(int(request.form["strawberry"])+int(request.form["raspberry"])+int(request.form["apple"]))
     print(request.form)
-    return render_template("checkout.html")
+    return render_template("checkout.html", strawberry=request.form["strawberry"], raspberry=request.form["raspberry"], apple=request.form["apple"], first_name=request.form["first_name"], last_name=request.form["last_name"], student_id=request.form["student_id"], total= total)
+
 
 @app.route('/fruits')
 def fruits():
