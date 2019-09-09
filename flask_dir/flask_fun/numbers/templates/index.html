@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Numbers</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div id='container'>
+        <div id= 'input_box'>
+            <h1>Welcome to the Great Numbers Game:</h1>
+                <h2>I am thinking of a number between 1 and 100, Take a guess!</h2>
+                    <!-- SESSION BOX CODE HERE -->
+                    {% if session['status']== "first" %}
+
+                <div>
+                    <form action='/process' method='post'>
+                        <input type="text" class="form-control" name="guess" placeholder="22">
+                        <button id="submit" type="submit">Submit</button>
+                    </form>
+                </div>
+
+                    {% elif session['status'] == "low" %}
+
+                <div>
+                    <div class ='play_box'>
+                        <h3> Too Low!!!</h3>
+                    </div>
+                    <form action='/process' method='post'>
+                        <input type="text" class="form-control" name="guess" placeholder="22">
+                        <button id="submit" type="submit">Submit</button>
+                    </form>
+                </div>
+
+                    {% elif session['status'] == "high" %}
+                <div>
+                    <div class ='play_box'>
+                        <h3> Too High!!!</h3>
+                    </div>
+                    <form action='/process' method='post'>
+                        <input type="text" class="form-control" name="guess" placeholder="22">
+                        <button id="submit" type="submit">Submit</button>
+                    </form>
+                </div>
+
+                {% elif session['status'] == "won" %}
+            <div>
+                <div class ='win_box'>
+                    <h3>Winner winner Chicken Dinner!!</h3>
+                </div>
+                <form action='/reset' method='post'>
+                    <input type="text" class="form-control" name="guess" placeholder="22">
+                    <button id="submit" type="submit">Play again?</button>
+                </form>
+            </div>
+
+        {% endif %}
+        </div>
+    </div>
+</body>
