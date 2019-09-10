@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Index</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'clock/css/styles.css' %}">
+
+    </head>
+    <body>
+		<div id='container'>
+			<div id="text_box">
+				<p>The current time is:</p>
+			</div>
+		<div id="clock_box">
+
+			<h1>{{time}}</h1>
+			<h1>{{date}}</h1>
+		</div>
+
+
+		</div>
+    </body>

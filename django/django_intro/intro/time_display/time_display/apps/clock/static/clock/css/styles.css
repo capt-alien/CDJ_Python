@@ -1,0 +1,35 @@
+* {
+	outline: 0px dotted red;
+	margin: 0px;
+}
+#container{
+	width: auto;
+    align-content: center;
+	height: 1000px;
+}
+
+#text_box{
+    padding:20px;
+    width: 200px;
+    height:50px;
+    text-align: center;
+    display: block;
+    border-style: solid;
+    border-width: medium;
+    border-color: black;
+    margin-left:500px;
+    margin-top: 100px;
+    font-size:20px
+}
+#clock_box{
+    padding:20px;
+    width: 500px;
+    height:70px;
+    text-align: center;
+    display: block;
+    border-style: solid;
+    border-width: medium;
+    border-color: black;
+    margin-left:350px;
+    margin-top: 25px;
+}
