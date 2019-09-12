@@ -1,0 +1,51 @@
+oak.save()
+sea=Dojo.objects.create(name="Sea-Town", city="Seattle", state="WA")
+ea.save()
+
+all = Dojo.objects.all()
+all.delete()
+(3, {'dojo_ninjas_app.Dojo': 3})
+>>>
+
+
+
+ninja_1=Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="bob", last_name="bob1")
+ninja_1.save()
+ninja_2=Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="dick", last_name="bob1")
+ninja_2.save()
+ninja_3=Ninja.objects.create(dojo_id=Dojo.objects.get(id=4), first_name="asdf", last_name="88")
+ninja_3.save()
+>>>
+
+
+
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=5), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="something", last_name="something else")
+object.save()
+object=Ninja.objects.create(dojo_id=Dojo.objects.get(id=6), first_name="something", last_name="something else")
+object.save()
+
+first=Ninja.objects.filter(dojo_id=4)
+print(first.id)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'id'
+print(first)
+
+
+
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+
+
+
+>>> new_dojo=Dojo.objects.create(name="something", city="somewhere", state="CA", description="new")
+>>> new_dojo.save()
