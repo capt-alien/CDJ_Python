@@ -1,0 +1,9 @@
+me = Users.objects.create(first_name="Eric", last_name="Botcher", email_adress="ericbotcher@gmail.com", age=36)
+
+jony = Users.objects.create(first_name="Johny", last_name="appleseed", email_adress="johny@gmail.com", age=36)
+
+jony.save()
+
+harry=Users.objects.create(first_name="harry", last_name="potter", email_adress="hp@hwtz.com", age=14)
+
+harry.save()
