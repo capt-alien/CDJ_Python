@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/styles.css' %}">
+
+</head>
+<body>
+    <!-- Container -->
+    <div id='container'>
+        <div class="new_box">
+            <h1>{{title}}</h1>
+            <div class='text_blocks'>
+                    <h2>Author: {{authors}}</h2>
+                    <p>{{description}}<p><br>
+            </div>
+        </div>
+
+    </div>
+</body>

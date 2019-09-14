@@ -1,51 +1,45 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>Books</title>
-      {% load static %}
-      <link rel="stylesheet" href="{% static 'books_authors_app/styles.css' %}">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/styles.css' %}">
 
-    </head>
-    <body>
-            <!-- Container -->
-		<div id='container'>
-		<div class="new_box">
+</head>
+<body>
+    <!-- Container -->
+    <div id='container'>
+        <div class="new_box">
             <h1>Add a book:</h1>
             <div class='text_blocks'>
                 <form action="/process_book">
                     <h2>Title:</h2>
-                      <input type="text" name="title"><br>
-                      <h2>Description:</h2><br>
-                      <input class='text_box_input' type="text" name="desc">
-                      <input class="sub_button" type="submit" value="Submit">
+                    <input type="text" name="title"><br>
+                    <h2>Description:</h2><br>
+                    <input class='text_box_input' type="text" name="desc">
+                    <input class="sub_button" type="submit" value="Submit">
                 </form>
             </div>
-            <!-- <list -->
-            <div id='list_continer'>
-                <table style="width:100%">
-                    <tr>
-                        <th>ID</th>
-                    </tr>
-                    <tr>
-                        <th>Title</th>
-                    </tr>
-                    <tr>
-                        <th>Action</th>
-                    </tr>
+        </div>
 
-                    <tr>
-                        <td>1</td>
-                        <td>python</td>
-                        <td>view</td>
+        <!-- <list -->
+        <div id='list_continer'>
+            <table style="width:100%">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
 
-                    </td>
-
-
-                </table>
-
-
-            </div>
-		</div>
-		</div>
-    </body>
+                {% for x in books %}
+                <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.title}}</td>
+                    <td><a href="/book/{{x.id}}">view</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
