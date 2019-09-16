@@ -15,12 +15,11 @@ def index(request):
     return render(request, "books_authors_app/index.html", context)
 
 def process_book(request, method='POST'):
+    new_book = Books.objects.create(title=request.POST['title'], desc=request.POST['desc'])
     return redirect("/")
 
 def view_book(request, id):
-    context={   'title': "testy Mctestface and the ultmate test",
-                'description': "testy faceses his biggest test ever.....Django Routeing...",
-                'authors': "Testy McQueen"}
+    context = {'book':Books.objects.get(id=id)}
     return render(request, "books_authors_app/book.html", context)
 
 def view_authors(request):

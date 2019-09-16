@@ -61,3 +61,7 @@ display: inline;
     text align: left;
     overflow-wrap: normal;
 }
+
+p{
+    margin:30px;
+}

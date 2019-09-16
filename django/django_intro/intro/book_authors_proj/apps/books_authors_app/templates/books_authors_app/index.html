@@ -13,7 +13,8 @@
         <div class="new_box">
             <h1>Add a book:</h1>
             <div class='text_blocks'>
-                <form action="/process_book">
+                <form action="/process_book" method="post">
+                    {%csrf_token%}
                     <h2>Title:</h2>
                     <input type="text" name="title"><br>
                     <h2>Description:</h2><br>
