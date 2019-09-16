@@ -11,13 +11,11 @@
     <!-- Container -->
     <div id='container'>
         <div class="new_box">
-            <h1>{{book.title}}</h1>
+            <h1>{{author.first_name}}</h1>
+            <h1>{{author.last_name}}</h1>
             <div class='text_blocks'>
-                {%for i in book.authors.all %}
-                <h2>{{i.first_name}} {{i.last_name}}</h2>
-                {%endfor%}
+                <p>{{author.notes}}</p>
 
-                <p>{{book.description}}<p><br>
                 </div>
             </div>
 

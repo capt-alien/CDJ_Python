@@ -22,7 +22,7 @@
 .new_box{
   padding:20px;
   width: 500px;
-  height:400px;
+  height:auto;
   text-align: left;
   display: block;
   border-style: solid;

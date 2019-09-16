@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books_authors_app/styles.css' %}">
+
+</head>
+<body>
+    <!-- Container -->
+    <div id='container'>
+        <div class="new_box">
+            <h1>Add an Author:</h1>
+            <div class='text_blocks'>
+                <form action="/process_author" method="post">
+                    {%csrf_token%}
+                    <h2>First Name:</h2>
+                    <input type="text" name="first_name"><br>
+
+                    <h2>Last Name:</h2>
+                    <input type="text" name="last_name"><br>
+
+                    <h2>Notes:</h2><br>
+                    <input class='text_box_input' type="text" name="notes">
+                    <input class="sub_button" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+        <!-- <list -->
+        <div id='list_continer'>
+            <table style="width:100%">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for x in authors %}
+                <tr>
+                    <td>{{x.first_name}}</td>
+                    <td>{{x.last_name}}</td>
+                    <td><a href="/author/{{x.id}}">view</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>

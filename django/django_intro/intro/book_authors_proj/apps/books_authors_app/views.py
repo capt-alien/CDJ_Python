@@ -5,13 +5,9 @@ from .models import *
 
 # Create your views here.
 def index(request):
-    #needs to querry all books in the DB and display on the right of the screen
     context = {
     "books":Books.objects.all()
     }
-    # context = obj.__dict__
-    print("*"*50)
-    print(context['books'].values())
     return render(request, "books_authors_app/index.html", context)
 
 def process_book(request, method='POST'):
@@ -23,10 +19,16 @@ def view_book(request, id):
     return render(request, "books_authors_app/book.html", context)
 
 def view_authors(request):
-    return HttpResponse("view authors werk")
+    context = {
+    "authors":Authors.objects.all()
+    }
+    return render(request, "books_authors_app/authors.html", context)
 
 def process_new_author(request, method='POST'):
-    return HttpResponse("new box werk")
+    new_author = Authors.objects.create(first_name=request.POST['first_name'], last_name=request.POST['last_name'], notes=request.POST['notes'])
+    return redirect("/authors")
+
 
 def view_author(request, id):
-    return HttpResponse("view authors werk")
+    context={'author': Authors.objects.get(id=id)}
+    return render(request, "books_authors_app/author.html", context)
