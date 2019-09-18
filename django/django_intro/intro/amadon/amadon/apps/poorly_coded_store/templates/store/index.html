@@ -30,7 +30,7 @@
         <tbody>
             {% for product in all_products %}
             <tr>
-                <form action="/checkout" method="post">
+                <form action="/process_order" method="post">
                     {% csrf_token %}
                     <td>{{product.description}}</td>
                     <td><input type="hidden" name="price" value="{{product.price}}">{{product.price}}</td>
