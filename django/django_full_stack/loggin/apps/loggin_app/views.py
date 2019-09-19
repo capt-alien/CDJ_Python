@@ -19,7 +19,8 @@ def regester(request, method='POST'):
         context["passwords"]="passwords do not match"
         return render(request, "error.html", context)
     salt = bcrypt.gensalt()
-    hashed_pwd = bcrypt.hashpw(psw.encode(), salt)
+    hashed_pwd = bcrypt.hashpw(psw.encode('utf8'), salt)
+    hashed_pwd = hashed_pwd.decode('utf8')
     new_user = Users.objects.create(
                                     first_name = first_name,
                                     last_name = last_name,
@@ -36,11 +37,25 @@ def login(request, method='POST'):
     if user:
         logged_user = user[0]
         print(logged_user.first_name)
-        if bcrypt.check_password_hash(request.POST['l_psw'].encode(), logged_user.hashed_pwd.encode()):
+        if bcrypt.checkpw(request.POST['l_psw'].encode(), logged_user.hashed_pwd.encode()):
             request.session['userid'] = logged_user.id
             return redirect('/success')
     return redirect("/")
 
 
-def success():
-    return render(request, "success.html")
+def success(request):
+    user_id = request.session['userid']
+    user = Users.objects.filter(id=user_id)
+    # print(user[0].first_name)
+    context= {
+            'first':user[0].first_name,
+            'last':user[0].last_name
+            }
+    return render(request, "success.html", context)
+
+def logout(request, method='POST'):
+    try:
+        del request.session['userid']
+    except KeyError:
+        pass
+    return redirect('/')

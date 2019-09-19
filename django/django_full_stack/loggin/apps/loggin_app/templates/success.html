@@ -8,7 +8,13 @@
 
 </head>
 <body>
-    <h1>Thanks {{username}}</h1>
+    <h1>Thanks {{first}} {{last}}</h1>
     <p>This motherfucker can register shit!</p>
     <hr>
+    <form name="logout" method='POST' action="/logout">
+        {% csrf_token %}
+        <a>logout</a>
+        <button type="submit" class="button">Logout</button>
+    </form>
+
 </body>
