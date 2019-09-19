@@ -14,8 +14,7 @@ def index(request):
     return HttpResponse("Error: you must be signed in to access this content")
 
 def add_message(request, method='POST'):
-    Message.objects.create(user_id=User.objects.get(id=request.session['id']),
-                            message=request.POST['message']
+    Messages.objects.create(user_id=Users.objects.get(id=request.session['userid']),
+                            message=request.POST['add_message']
                             )
-    messages.success(request, "Message Mosted")
-    redirect('/')
+    return redirect('/wall')
