@@ -39,7 +39,9 @@ def login(request, method='POST'):
         print(logged_user.first_name)
         if bcrypt.checkpw(request.POST['l_psw'].encode(), logged_user.hashed_pwd.encode()):
             request.session['userid'] = logged_user.id
-            return redirect('/success')
+            print("*"*50)
+            print("user loggdin")
+            return redirect('/wall')
     return redirect("/")
 
 
@@ -47,11 +49,11 @@ def success(request):
     user_id = request.session['userid']
     user = Users.objects.filter(id=user_id)
     # print(user[0].first_name)
-    context= {
-            'first':user[0].first_name,
-            'last':user[0].last_name
-            }
-    return render(request, "success.html", context)
+    # context= {
+    #         'first':user[0].first_name,
+    #         'last':user[0].last_name
+    #         }
+    return redirect(request, '/wall')
 
 def logout(request, method='POST'):
     try:
