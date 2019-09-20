@@ -5,7 +5,7 @@
 </head>
 <body>
     <h3>Hello {{ user.first_name }}, you have logged in successfully!</h3>
-    <p>Your user id: {{ request.session.id }}</p>
+    <p>Your user id: {{ request.session.userid }}</p>
     <p>User_First Name: {{ user.first_name }}</p>
     <p>User_Last Name: {{ user.last_name }}</p>
     <p>User_Email: {{ user.email }}</p>
@@ -16,18 +16,18 @@
         <input type="submit" value="Post Message" >
     </form>
 
-    <!-- <h2>Wall Messages:</h2>
+    <h2>Wall Messages:</h2>
     {% if post_data %}
       {% for post in post_data %}
       <fieldset>
             <h3>{{ post.user.first_name }} -- {{ post.created_at }}</h3>
             <p>{{ post.message }}</p>
-            <!-- DELETE  -->
+            <!-- DELETE -->
             {% if post.user.id == request.session.id %}
-            <a href="/message/delete/{{post.id}}">Delete</a>
-            {% endif %} -->
+            <a href="/wall/delete/{{post.id}}" >Delete</a>
+            {% endif %}
 
-<!--
+
             <h4>Comments:</h4>
             {% if comment_data %}
                 {% for comment in comment_data %}
@@ -38,10 +38,10 @@
                     </ul>
                 {% endfor %}
             {% endif %}
-            <form action="/comment" method='POST'>
+            <form action="wall/add_comment" method='POST'>
                 {% csrf_token %}
                 <p>Post a comment</p>
-                <input type="hidden" value={{post.id}} name="message_ID">
+                <input type="hidden" value={{post.id}} name="message_id">
                 <textarea name="comment" id="comment" cols="100" rows="2"></textarea>
                 <input type="submit" value="Post Comment">
             </form>
@@ -55,5 +55,5 @@
     {% csrf_token %}
     <input type="submit" value="Logout">
     </form>
-</body> -->
+</body>
 </html>
