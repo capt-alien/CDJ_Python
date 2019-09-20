@@ -24,8 +24,8 @@
             <p>{{ post.message }}</p>
 
             <!-- DELETE  -->
-            {% if post.user.id == request.session.id %}
-            <a href="/message/delete/{{post.id}}">Delete</a>
+            {% if post.user.id == request.session.userid %}
+                <a href="/message/delete/{{post.id}}">Delete</a>
             {% endif %}
 
 

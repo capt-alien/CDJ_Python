@@ -82,6 +82,6 @@ def add_comment(request, method='POST'):
 
 
 def delete_message(request, id):
-    deleter = Message.object.get(id=id)
+    deleter = Messages.objects.get(id=id)
     deleter.delete()
     return redirect('/wall')
