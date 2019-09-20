@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Walla-walla-wall</title>
+</head>
+<body>
+    <h3>Hello {{ user.first_name }}, you have logged in successfully!</h3>
+    <p>Your user id: {{ request.session.userid }}</p>
+    <p>User_First Name: {{ user.first_name }}</p>
+    <p>User_Last Name: {{ user.last_name }}</p>
+    <p>User_Email: {{ user.email }}</p>
+
+    <form action="/add_message" method="POST">
+        {% csrf_token %}
+        <textarea name="add_message" id="message" cols="100" rows="10" placeholder="Post a message"></textarea>
+        <input type="submit" value="Post Message" >
+    </form>
+
+    <h2>Wall Messages:</h2>
+    {% if post_data %}
+      {% for post in post_data %}
+      <fieldset>
+            <h3>{{ post.user.first_name }} -- {{ post.created_at }}</h3>
+            <p>{{ post.message }}</p>
+
+            <!-- DELETE  -->
+            {% if post.user.id == request.session.id %}
+            <a href="/message/delete/{{post.id}}">Delete</a>
+            {% endif %}
+
+
+            <h4>Comments:</h4>
+                {% for comment in post.comments.all %}
+                    <ul>
+                        {% if comment.message.id == post.id %}
+                        <li>{{comment.comment}}--{{ comment.user.first_name }} -- {{ comment.created_at}}</li>
+                        {% endif %}
+                    </ul>
+                {% endfor %}
+
+
+
+            <form action="wall/add_comment" method='POST'>
+                {% csrf_token %}
+                <p>Post a comment</p>
+                <input type="hidden" value={{post.id}} name="message_id">
+                <textarea name="comment" id="comment" cols="100" rows="2"></textarea>
+                <input type="submit" value="Post Comment">
+            </form>
+
+
+        </fieldset>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/logout">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+    </form>
+</body>
+</html>
